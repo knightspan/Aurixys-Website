@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(where.exe uipro *)",
+      "Bash(uipro --version)",
+      "Bash(uipro --help)",
+      "Bash(uipro init *)",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)",
+      "Bash(npm run *)",
+      "Read(//c/Users/patil/AppData/Local/Temp/claude/D--Aurixys/93c00156-4fb8-4ca4-a42f-4ccb76c3ba5a/tasks/**)"
+    ]
+  }
+}

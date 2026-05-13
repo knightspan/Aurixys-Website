@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* ------------------------------------------------------------------
+   * Colors — sovereign dark register, sparingly accented
+   * ------------------------------------------------------------------ */
+  --color-bg: #0a0b0d;
+  --color-bg-elevated: #111316;
+  --color-bg-panel: #16181c;
+  --color-rule: #1f2227;
+
+  --color-ink: #e8eaed;
+  --color-ink-dim: #9ba1aa;
+  --color-ink-mute: #5a616b;
+
+  --color-accent: #00d4ff;
+  --color-accent-warm: #ffb547;
+  --color-signal: #4ade80;
+  --color-warn: #f87171;
+
+  /* shadcn-style aliases (keeps generated primitives happy) */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-ink);
+  --color-card: var(--color-bg-panel);
+  --color-card-foreground: var(--color-ink);
+  --color-popover: var(--color-bg-elevated);
+  --color-popover-foreground: var(--color-ink);
+  --color-primary: var(--color-ink);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: var(--color-bg-panel);
+  --color-secondary-foreground: var(--color-ink);
+  --color-muted: var(--color-bg-panel);
+  --color-muted-foreground: var(--color-ink-dim);
+  --color-border: var(--color-rule);
+  --color-input: var(--color-rule);
+  --color-ring: var(--color-accent);
+
+  /* ------------------------------------------------------------------
+   * Fonts
+   * ------------------------------------------------------------------ */
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-display), var(--font-inter), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, "JetBrains Mono", monospace;
+  --font-deva: var(--font-deva), "Noto Serif Devanagari", serif;
+
+  /* ------------------------------------------------------------------
+   * Typographic scale — display
+   * ------------------------------------------------------------------ */
+  --text-d-xs: 18px;
+  --text-d-sm: 24px;
+  --text-d-md: 32px;
+  --text-d-lg: 48px;
+  --text-d-xl: 64px;
+  --text-d-2xl: 96px;
+  --text-d-3xl: 128px;
+
+  /* Custom radii (we mostly use 0 or 9999 — hardware aesthetic) */
+  --radius-pill: 9999px;
+}
+
+/* ------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------ */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--color-rule);
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-bg);
+  }
+
+  *:focus-visible {
+    outline: 1px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  /* Scrollbar — minimal, dark */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #2a2d33;
+    border-radius: 0;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #3a3d44;
+  }
+
+  /* Textarea-specific scrollbar (used by ai-prompt-box) */
+  textarea::-webkit-scrollbar {
+    width: 6px;
+  }
+  textarea::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  textarea::-webkit-scrollbar-thumb {
+    background-color: #444444;
+    border-radius: 3px;
+  }
+  textarea::-webkit-scrollbar-thumb:hover {
+    background-color: #555555;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Utilities
+ * ------------------------------------------------------------------ */
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+
+  .text-mono {
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+
+  .hairline {
+    border-color: var(--color-rule);
+  }
+
+  /* Subtle bottom vignette used on the home page */
+  .page-vignette::after {
+    content: "";
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 120px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+/* ------------------------------------------------------------------
+ * Reduced motion
+ * ------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
