@@ -20,9 +20,9 @@ export const TEAM: Member[] = [
     asset: "team/kavish.jpg",
   },
   {
-    name: "Amol Katkade",
+    name: "Dr. H.R. Kulkarni",
     role: "Mentor",
     tagline: "Programme execution, partner engagement.",
-    asset: "team/amol.jpg",
+    asset: "team/hr-kulkarni.jpg",
   },
 ];

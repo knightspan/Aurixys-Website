@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Noto_Serif_Devanagari } from "next/font/google";
+import { Inter, JetBrains_Mono, Noto_Serif_Devanagari, Instrument_Serif, Barlow } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ChatLauncher } from "@/components/layout/ChatLauncher";
@@ -31,6 +31,21 @@ const deva = Noto_Serif_Devanagari({
   subsets: ["devanagari"],
   weight: ["400", "500", "700"],
   variable: "--font-deva",
+  display: "swap",
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
+  display: "swap",
+});
+
+const barlow = Barlow({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-barlow",
   display: "swap",
 });
 
@@ -103,7 +118,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <html lang="en" className={`${inter.variable} ${interDisplay.variable} ${mono.variable} ${deva.variable}`}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interDisplay.variable} ${mono.variable} ${deva.variable} ${instrument.variable} ${barlow.variable}`}
+    >
       <body className="min-h-screen bg-bg text-ink antialiased">
         <a
           href="#main"
